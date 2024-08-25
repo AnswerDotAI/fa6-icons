@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "fa6-icons"
+  site-url: "https://AnswerDotAI.github.io/fa6-icons"
+  description: "fontawesome 6 free icons as SVGs"
+  repo-branch: main
+  repo-url: "https://github.com/AnswerDotAI/fa6-icons"

@@ -7,10 +7,7 @@ d = { 'settings': { 'branch': 'main',
                 'lib_path': 'fa6_icons'},
   'syms': { 'fa6_icons.core': { 'fa6_icons.core.HtmlNotStr': ('core.html#htmlnotstr', 'fa6_icons/core.py'),
                                 'fa6_icons.core.HtmlNotStr._repr_html_': ('core.html#htmlnotstr._repr_html_', 'fa6_icons/core.py'),
-<<<<<<< HEAD
                                 'fa6_icons.core.SvgIcon': ('core.html#svgicon', 'fa6_icons/core.py'),
-=======
->>>>>>> upstream/main
                                 'fa6_icons.core._dims': ('core.html#_dims', 'fa6_icons/core.py'),
                                 'fa6_icons.core._name': ('core.html#_name', 'fa6_icons/core.py'),
                                 'fa6_icons.core._svgs': ('core.html#_svgs', 'fa6_icons/core.py')},

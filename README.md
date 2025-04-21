@@ -12,71 +12,93 @@ easier to use from Python.
 
 ## Install
 
+**pip**:
+
 ``` sh
 pip install fa6_icons
 ```
 
-…or…
+**conda**:
 
 ``` sh
 conda install -c fastai fa6_icons
 ```
 
-## How to use
+**uv**:
 
-Two objects are provided, `svgs` and `dims`.
-
-``` python
-from fa6_icons import svgs,dims
+``` sh
+uv add fa6_icons
 ```
 
-These are both [AttrDict](https://fastcore.fast.ai/basics.html#attrdict)
-objects, which behave as dicts, but can also be accessed with
-dotted-attrs. They contain the same keys. To search them, use standard
-python dict approaches, e.g:
+# How to use
+
+This notebook demonstrates how to use the
+[`SvgIcon`](https://AnswerDotAI.github.io/fa6-icons/core.html#svgicon),
+`svgs`, and `dims` objects defined in the core module.
 
 ``` python
-[o for o in svgs if 'addr' in o]
+from fa6_icons.core import svgs, dims, SvgIcon, icons
 ```
 
-    ['address_book', 'address_card']
+### Displaying an SVG Icon
 
-Each style is available as a key for each SVG and dims entry, e.g:
+To retrieve an icon, you can either access it as an attribute of the
+svgs object or use the icons dictionary with the icon’s name as the key
 
 ``` python
-dims.address_card
+icon = svgs.address_book.regular
+```
+
+``` python
+SvgIcon(icon)
+```
+
+<svg xmlns="http://www.w3.org/2000/svg" style="max-width: 16px; fill: currentColor" viewBox="0 0 512 512"><path d="M384 48c8.8 0 16 7.2 16 16l0 384c0 8.8-7.2 16-16 16L96 464c-8.8 0-16-7.2-16-16L80 64c0-8.8 7.2-16 16-16l288 0zM96 0C60.7 0 32 28.7 32 64l0 384c0 35.3 28.7 64 64 64l288 0c35.3 0 64-28.7 64-64l0-384c0-35.3-28.7-64-64-64L96 0zM240 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128zm-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16l192 0c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80l-64 0zM512 80c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64zM496 192c-8.8 0-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64c0-8.8-7.2-16-16-16zm16 144c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64z"/></svg>
+
+or
+
+``` python
+icon = icons["address-book"]["svg"]["regular"]
+```
+
+``` python
+SvgIcon(icon)
+```
+
+<svg xmlns="http://www.w3.org/2000/svg" style="max-width: 16px; fill: currentColor" viewBox="0 0 512 512"><path d="M384 48c8.8 0 16 7.2 16 16l0 384c0 8.8-7.2 16-16 16L96 464c-8.8 0-16-7.2-16-16L80 64c0-8.8 7.2-16 16-16l288 0zM96 0C60.7 0 32 28.7 32 64l0 384c0 35.3 28.7 64 64 64l288 0c35.3 0 64-28.7 64-64l0-384c0-35.3-28.7-64-64-64L96 0zM240 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128zm-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16l192 0c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80l-64 0zM512 80c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64zM496 192c-8.8 0-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64c0-8.8-7.2-16-16-16zm16 144c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64z"/></svg>
+
+### Customizing the Icon
+
+The
+[`SvgIcon`](https://AnswerDotAI.github.io/fa6-icons/core.html#svgicon)
+class allows you to render SVG icons with customizable properties such
+as width, color, style, and additional attributes. This makes it easy to
+adapt icons to fit the design and functionality of your application.
+
+``` python
+SvgIcon(icon, width=32, color="#ff0000")
+```
+
+<svg xmlns="http://www.w3.org/2000/svg" style="max-width: 32px; fill: #ff0000" viewBox="0 0 512 512"><path d="M384 48c8.8 0 16 7.2 16 16l0 384c0 8.8-7.2 16-16 16L96 464c-8.8 0-16-7.2-16-16L80 64c0-8.8 7.2-16 16-16l288 0zM96 0C60.7 0 32 28.7 32 64l0 384c0 35.3 28.7 64 64 64l288 0c35.3 0 64-28.7 64-64l0-384c0-35.3-28.7-64-64-64L96 0zM240 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128zm-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16l192 0c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80l-64 0zM512 80c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64zM496 192c-8.8 0-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64c0-8.8-7.2-16-16-16zm16 144c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64z"/></svg>
+
+``` python
+SvgIcon(icon, width=32, color="#ffff00", style="background: #ff00cd")
+```
+
+<svg xmlns="http://www.w3.org/2000/svg" style="background: #ff00cd; max-width: 32px; fill: #ffff00" viewBox="0 0 512 512"><path d="M384 48c8.8 0 16 7.2 16 16l0 384c0 8.8-7.2 16-16 16L96 464c-8.8 0-16-7.2-16-16L80 64c0-8.8 7.2-16 16-16l288 0zM96 0C60.7 0 32 28.7 32 64l0 384c0 35.3 28.7 64 64 64l288 0c35.3 0 64-28.7 64-64l0-384c0-35.3-28.7-64-64-64L96 0zM240 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128zm-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16l192 0c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80l-64 0zM512 80c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64zM496 192c-8.8 0-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64c0-8.8-7.2-16-16-16zm16 144c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64z"/></svg>
+
+``` python
+SvgIcon(icon, width=64, style="background: #ff00cd")
+```
+
+<svg xmlns="http://www.w3.org/2000/svg" style="background: #ff00cd; max-width: 64px; fill: currentColor" viewBox="0 0 512 512"><path d="M384 48c8.8 0 16 7.2 16 16l0 384c0 8.8-7.2 16-16 16L96 464c-8.8 0-16-7.2-16-16L80 64c0-8.8 7.2-16 16-16l288 0zM96 0C60.7 0 32 28.7 32 64l0 384c0 35.3 28.7 64 64 64l288 0c35.3 0 64-28.7 64-64l0-384c0-35.3-28.7-64-64-64L96 0zM240 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128zm-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16l192 0c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80l-64 0zM512 80c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64zM496 192c-8.8 0-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64c0-8.8-7.2-16-16-16zm16 144c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64z"/></svg>
+
+### Getting Icon Dimensions
+
+``` python
+dims.address_book
 ```
 
 ``` json
-{'regular': (512, 576), 'solid': (512, 576)}
+{'regular': (512, 512), 'solid': (512, 512)}
 ```
-
-In a notebook environment, SVGs are displayed:
-
-``` python
-svgs.address_card.regular
-```
-
-<div style="max-width: 150px; width: 100%;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M512 80c8.8 0 16 7.2 16 16l0 320c0 8.8-7.2 16-16 16L64 432c-8.8 0-16-7.2-16-16L48 96c0-8.8 7.2-16 16-16l448 0zM64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l448 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM208 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128zm-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16l192 0c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80l-64 0zM376 144c-13.3 0-24 10.7-24 24s10.7 24 24 24l80 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-80 0zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24l80 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-80 0z"/></svg></div>
-
-To make attr access more convenient, hyphens are replaced with
-underscores, and icon names starting with a digit are prefixed with an
-underscore.
-
-Use `width` to view the svg in a notebook with a different width (it
-defaults to 300px).
-
-``` python
-svgs._9.solid.width(25)
-```
-
-<div style="max-width: 25px; width: 100%;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M64 192a96 96 0 1 0 192 0A96 96 0 1 0 64 192zm87.5 159.8C67.1 347.4 0 277.5 0 192C0 103.6 71.6 32 160 32s160 71.6 160 160c0 2.6-.1 5.3-.2 7.9c-1.7 35.7-15.2 70-38.4 97.4l-145 171.4c-11.4 13.5-31.6 15.2-45.1 3.8s-15.2-31.6-3.8-45.1l63.9-75.6z"/></svg></div>
-
-When stringified, the SVG text is returned:
-
-``` python
-print(svgs._9.solid)
-```
-
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M64 192a96 96 0 1 0 192 0A96 96 0 1 0 64 192zm87.5 159.8C67.1 347.4 0 277.5 0 192C0 103.6 71.6 32 160 32s160 71.6 160 160c0 2.6-.1 5.3-.2 7.9c-1.7 35.7-15.2 70-38.4 97.4l-145 171.4c-11.4 13.5-31.6 15.2-45.1 3.8s-15.2-31.6-3.8-45.1l63.9-75.6z"/></svg>
-

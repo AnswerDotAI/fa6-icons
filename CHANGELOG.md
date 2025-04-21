@@ -1,6 +1,11 @@
 # Release notes
 
 <!-- do not remove -->
+## 0.0.4
+
+- Added SvgIcon class.
+- Updated icons to 6.7.2
+
 
 
 ## 0.0.2

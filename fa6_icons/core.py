@@ -11,27 +11,9 @@ from fastcore.utils import *
 class HtmlNotStr(NotStr):
     "Behaves like a `str`, but isn't a `str`, and renders HTML in a notebook"
     def _repr_html_(self): return str(self)
-    
-class SvgNotStr(NotStr):
-    "Behaves list a `str`, but isn't a `str`, and displays as SVG in a notebook"
-    w=150
-    def _repr_html_(self): return f'<div style="max-width: {self.w}px; width: 100%;">{self}</div>'
-    def width(self, w:int):
-        "Set the width and return self"
-        self.w = w
-        return self
-
-# %% ../nbs/00_core.ipynb 5
-def get_svg(ico, w=None, viewbox=None, cls=None, xmlns="http://www.w3.org/2000/svg", color=None, style='', **kwargs):
-    if not viewbox: viewbox = ' '.join(map(str,ico['viewBox']))
-    path = ico['path']
-    if w: style += f';max-width: {w}px'
-    if color: style += f';fill: {color}'
-    style = f' style="{style}"'
-    return SvgNotStr(f'<svg xmlns="{xmlns}"{style} viewBox="{viewbox}"><path d="{path}"/></svg>')
 
 # %% ../nbs/00_core.ipynb 8
-def _svgs(o): return {k:get_svg(v) for k,v in o.items()}
+def _svgs(o): return {k:SvgNotStr(v['raw']) for k,v in o.items()}
 
 def _name(o):
     if o[0].isdigit(): o = '_'+o

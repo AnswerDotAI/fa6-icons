@@ -28,4 +28,5 @@ version = {attr = "fa6_icons.__version__"}
 include = ["fa6_icons"]
 
 [tool.nbdev]
+allowed_cell_metadata_keys = ["solveit_ai"]
 custom_sidebar = false
